@@ -16,7 +16,6 @@ mosquitto/data/
 mosquitto/log/
 influxdb/data/
 influxdb/config/
-node-red-data/
 
 # OS files
 .DS_Store
