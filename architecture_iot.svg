@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="1050" height="700" viewBox="0 0 1050 700" xmlns="http://www.w3.org/2000/svg" font-family="Arial, sans-serif">
+  <style>
+    .comp { fill:#e6f2ff; stroke:#0066cc; stroke-width:2; }
+    .cont { fill:#f3e6ff; stroke:#9900cc; stroke-width:2; }
+    .infra { fill:#f0f0f0; stroke:#999; stroke-width:2; }
+    .label { font-size:15px; font-weight:bold; }
+    .small { font-size:13px; }
+    .violet { fill:#b3a1e6; }
+    .arrow { stroke:#333; stroke-width:2; marker-end:url(#arrowhead); }
+    .mqtt { stroke-dasharray:6 4; stroke:#009688; }
+    .http { stroke-dasharray:2 2; stroke:#d2691e; }
+    .lora { stroke-dasharray:4 2; stroke:#4caf50; }
+    .modbus { stroke-dasharray:4 2; stroke:#b8860b; }
+  </style>
+  <defs>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#333"/>
+    </marker>
+  </defs>
+
+  <!-- Infra (VM) -->
+  <rect x="180" y="90" width="700" height="500" rx="25" class="infra"/>
+  <text x="195" y="115" class="label" fill="#666">Proxmox VM 103 DockerPVE2</text>
+
+  <!-- Devices -->
+  <rect x="40" y="30" width="120" height="50" class="comp"/>
+  <text x="55" y="60" class="label">LilyGo-GPS1</text>
+  <rect x="40" y="100" width="120" height="50" class="comp"/>
+  <text x="47" y="130" class="label">Dragino LSN50-1</text>
+  <rect x="40" y="170" width="120" height="50" class="comp"/>
+  <text x="55" y="200" class="label">Co2 KF-800F</text>
+  <rect x="40" y="240" width="120" height="50" class="comp"/>
+  <text x="65" y="270" class="label">Barrière</text>
+  <rect x="40" y="310" width="120" height="50" class="comp"/>
+  <text x="60" y="340" class="label">Sonomètre</text>
+
+  <!-- Passerelles -->
+  <rect x="180" y="30" width="140" height="45" class="comp"/>
+  <text x="190" y="60" class="small">Passerelle Semtech UDP</text>
+  <rect x="180" y="100" width="140" height="45" class="comp"/>
+  <text x="190" y="130" class="small">Passerelle Semtech BasicStation</text>
+  <rect x="180" y="170" width="140" height="45" class="comp"/>
+  <text x="190" y="200" class="small">Passerelle Modbus TCP/485</text>
+
+  <!-- Containers Chirpstack (violet) -->
+  <rect x="350" y="40" width="120" height="45" class="cont violet"/>
+  <text x="360" y="70" class="small">Chirpstack-gw-brdge</text>
+  <rect x="350" y="100" width="120" height="45" class="cont violet"/>
+  <text x="360" y="130" class="small">Chirpstack-gw-bridge-basicstation</text>
+  <rect x="350" y="160" width="120" height="45" class="cont violet"/>
+  <text x="370" y="190" class="small">Chirpstack serveur</text>
+  <rect x="350" y="220" width="120" height="45" class="cont violet"/>
+  <text x="370" y="250" class="small">Chirpstack API REST</text>
+  <rect x="350" y="280" width="120" height="45" class="cont violet"/>
+  <text x="395" y="310" class="small">Redis</text>
+  <rect x="350" y="340" width="120" height="45" class="cont violet"/>
+  <text x="390" y="370" class="small">Postgres</text>
+
+  <!-- Mosquitto (central) -->
+  <rect x="520" y="170" width="140" height="70" class="cont" fill="#b3d1ff"/>
+  <text x="540" y="210" class="label">Mosquitto</text>
+
+  <!-- Autres containers -->
+  <rect x="700" y="110" width="130" height="45" class="cont"/>
+  <text x="715" y="140" class="small">Mosquitto log</text>
+  <rect x="700" y="170" width="130" height="45" class="cont"/>
+  <text x="720" y="200" class="small">mqtt-client-web</text>
+  <rect x="700" y="230" width="130" height="45" class="cont"/>
+  <text x="735" y="260" class="small">nodeJS</text>
+  <rect x="700" y="290" width="130" height="45" class="cont"/>
+  <text x="720" y="320" class="small">python-slim</text>
+
+  <!-- PC Dashboard et Navigateur -->
+  <rect x="890" y="140" width="120" height="60" class="comp"/>
+  <text x="900" y="175" class="label">PC DashBoard</text>
+  <rect x="890" y="240" width="120" height="60" class="comp"/>
+  <text x="905" y="275" class="label">PC Navigateur</text>
+
+  <!-- Flèches Devices vers passerelles -->
+  <line x1="160" y1="55" x2="180" y2="55" class="arrow lora"/>
+  <line x1="160" y1="125" x2="180" y2="125" class="arrow lora"/>
+  <line x1="160" y1="195" x2="180" y2="195" class="arrow modbus"/>
+  <line x1="160" y1="265" x2="320" y2="192" class="arrow modbus"/>
+  <line x1="160" y1="335" x2="520" y2="205" class="arrow mqtt"/>
+
+  <!-- Flèches passerelles vers containers -->
+  <line x1="320" y1="55" x2="350" y2="62" class="arrow"/>
+  <line x1="320" y1="125" x2="350" y2="122" class="arrow"/>
+  <line x1="320" y1="192" x2="350" y2="182" class="arrow"/>
+
+  <!-- Flèches containers violets -->
+  <line x1="470" y1="62" x2="520" y2="205" class="arrow mqtt"/>
+  <line x1="470" y1="122" x2="520" y2="205" class="arrow mqtt"/>
+  <line x1="470" y1="182" x2="520" y2="205" class="arrow mqtt"/>
+  <line x1="470" y1="250" x2="520" y2="205" class="arrow mqtt"/>
+  <line x1="470" y1="310" x2="520" y2="205" class="arrow mqtt"/>
+  <line x1="470" y1="370" x2="520" y2="205" class="arrow mqtt"/>
+
+  <!-- Mosquitto vers autres containers -->
+  <line x1="660" y1="205" x2="700" y2="132" class="arrow mqtt"/>
+  <line x1="660" y1="205" x2="700" y2="192" class="arrow mqtt"/>
+  <line x1="660" y1="205" x2="700" y2="252" class="arrow http"/>
+  <line x1="660" y1="205" x2="700" y2="312" class="arrow mqtt"/>
+
+  <!-- Mosquitto vers PC Dashboard/Navigateur -->
+  <line x1="660" y1="205" x2="890" y2="170" class="arrow mqtt"/>
+  <line x1="660" y1="205" x2="890" y2="270" class="arrow mqtt"/>
+
+  <!-- mqtt-client-web vers Navigateur -->
+  <line x1="830" y1="192" x2="890" y2="270" class="arrow http"/>
+
+  <!-- nodeJS vers Navigateur -->
+  <line x1="830" y1="252" x2="890" y2="270" class="arrow http"/>
+
+  <!-- Légende -->
+  <rect x="30" y="620" width="290" height="60" fill="#fff" stroke="#bbb" stroke-width="1"/>
+  <text x="40" y="640" class="small">Légende :</text>
+  <line x1="130" y1="630" x2="160" y2="630" class="arrow lora"/>
+  <text x="165" y="635" class="small">LoRa</text>
+  <line x1="130" y1="650" x2="160" y2="650" class="arrow modbus"/>
+  <text x="165" y="655" class="small">Modbus</text>
+  <line x1="230" y1="630" x2="260" y2="630" class="arrow mqtt"/>
+  <text x="265" y="635" class="small">MQTT</text>
+  <line x1="230" y1="650" x2="260" y2="650" class="arrow http"/>
+  <text x="265" y="655" class="small">HTTP/Websocket</text>
+</svg>
